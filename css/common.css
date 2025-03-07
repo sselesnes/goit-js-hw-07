@@ -19,6 +19,11 @@ ul {
   list-style: none;
 }
 
+li {
+  margin: 0;
+  padding: 0;
+}
+
 .gallery {
   display: flex;
   flex-direction: row;
@@ -26,10 +31,15 @@ ul {
   row-gap: 48px;
   flex-wrap: wrap;
   justify-content: center;
+  overflow: hidden;
 }
 
 .gallery-image {
   height: 300px;
   width: 360px;
   object-fit: cover;
+}
+
+.gallery li {
+  height: 300px;
 }
