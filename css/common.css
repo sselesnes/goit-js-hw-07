@@ -3,7 +3,7 @@
 }
 
 body {
-  margin: 16px;
+  margin: 24px;
   font-family: "Montserrat", sans-serif;
   letter-spacing: 0.04em;
   -webkit-font-smoothing: antialiased;
@@ -13,7 +13,7 @@ body {
 }
 
 body p {
-  margin-bottom: 8px;
+  margin-bottom: 24px;
 }
 
 h1,
@@ -90,6 +90,21 @@ li:not(.item):not(.gallery li) {
   padding: 8px 16px;
 }
 
-#name-input {
-  margin-bottom: 16px;
+.login-form input {
+  margin: 8px 0;
+}
+
+.login-form button {
+  margin-top: 8px;
+  width: 86px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background: #4e75ff;
+  color: #fff;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.64px;
 }
