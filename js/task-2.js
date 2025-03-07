@@ -25,14 +25,14 @@ const images = [
   },
 ];
 
-function createGallery(images) {
+const createGallery = images => {
   return images
-    .map(({ url, alt }) => {
-      return `<li>
+    .map(
+      ({ url, alt }) => `<li>
         <img src="${url}" alt="${alt}" class="gallery-image"/>
-      </li>`;
-    })
+      </li>`
+    )
     .join("");
-}
+};
 
 document.querySelector(`.gallery`).innerHTML = createGallery(images);

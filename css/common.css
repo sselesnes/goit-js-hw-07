@@ -22,16 +22,15 @@ ul {
 .gallery {
   display: flex;
   flex-direction: row;
-  column-gap: 24px;
-  row-gap: 48px;
   flex-wrap: wrap;
   justify-content: center;
-  overflow: hidden;
+  column-gap: 24px;
+  row-gap: 48px;
 }
 
 .gallery-image {
-  height: 300px;
   width: 360px;
+  height: 300px;
   object-fit: cover;
 }
 
