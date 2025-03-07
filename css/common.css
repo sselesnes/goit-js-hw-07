@@ -79,15 +79,14 @@ ul {
   margin-bottom: 16px;
 }
 
-ul:not(#categories):not(.gallery) {
+body #categories ul {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
 input,
-body #categories .item ul li,
-li:not(.item):not(.gallery li):not(body ul li) {
+body #categories .item ul li {
   display: flex;
   align-items: center;
   width: 360px;
@@ -115,6 +114,5 @@ body h1 {
   color: #fff;
   font-size: 16px;
   font-weight: 500;
-  line-height: 14px;
   letter-spacing: 0.64px;
 }
