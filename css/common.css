@@ -5,6 +5,8 @@
 body {
   margin: 24px;
   font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
   letter-spacing: 0.04em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -30,18 +32,19 @@ p {
 label,
 input,
 input::placeholder {
-  color: #2e2f42;
   font-size: 16px;
+  font-weight: 400;
+  color: #2e2f42;
 }
 
 h1 {
   font-size: 24px;
+  font-weight: 600;
 }
 
 ul {
   list-style: none;
   padding: 0;
-  font-size: 16px;
 }
 
 .gallery {
@@ -83,7 +86,8 @@ ul:not(#categories):not(.gallery) {
 }
 
 input,
-li:not(.item):not(.gallery li) {
+body #categories .item ul li,
+li:not(.item):not(.gallery li):not(body ul li) {
   display: flex;
   align-items: center;
   width: 360px;
@@ -110,8 +114,7 @@ body h1 {
   background: #4e75ff;
   color: #fff;
   font-size: 16px;
-  font-style: normal;
   font-weight: 500;
-  line-height: 24px;
+  line-height: 14px;
   letter-spacing: 0.64px;
 }
