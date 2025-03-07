@@ -10,7 +10,7 @@ body {
   letter-spacing: 0.04em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ffffff;
+  background-color: #fff;
   color: #2e2f42;
 }
 
@@ -27,14 +27,6 @@ h6,
 ul,
 p {
   margin: 0;
-}
-
-label,
-input,
-input::placeholder {
-  font-size: 16px;
-  font-weight: 400;
-  color: #2e2f42;
 }
 
 h1 {
@@ -79,14 +71,14 @@ ul {
   margin-bottom: 16px;
 }
 
-body #categories ul {
+#categories ul {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
 input,
-body #categories .item ul li {
+#categories .item ul li {
   display: flex;
   align-items: center;
   width: 360px;
@@ -96,12 +88,25 @@ body #categories .item ul li {
   padding: 8px 16px;
 }
 
-body h1 {
+h1:has(#name-output) {
   margin-top: 16px;
 }
 
+input,
+input::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  color: #2e2f42;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .login-form input {
-  margin: 8px 0;
+  margin-top: 8px;
 }
 
 .login-form button {
