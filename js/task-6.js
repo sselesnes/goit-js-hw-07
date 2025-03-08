@@ -13,51 +13,6 @@ inputField.focus();
 destroyBtn.style.background = "#ff4e4e";
 let boxesAmount = 0;
 
-inputField.addEventListener("input", event => {
-  event.preventDefault();
-  const value = Number(inputField.value);
-  if (value >= 0 && value <= 100) {
-    boxesAmount = value;
-  } else {
-    inputField.value = String(boxesAmount);
-  }
-});
-
-destroyBtn.addEventListener("mouseover", () => {
-  boxesDiv.innerHTML && (destroyBtn.style.background = "#ff7070");
-});
-
-destroyBtn.addEventListener("mouseout", () => {
-  destroyBtn.style.background = "#ff4e4e";
-});
-
-createBtn.addEventListener("mouseover", () => {
-  boxesAmount && (createBtn.style.background = "#6C8Cff");
-});
-
-createBtn.addEventListener("mouseout", () => {
-  createBtn.style.background = "#4E75FF";
-});
-
-createBtn.addEventListener("click", () => {
-  boxesAmount && createBoxes(boxesAmount);
-});
-
-inputField.addEventListener("keydown", event => {
-  if (event.key === "Enter") {
-    if (boxesAmount) {
-      createBoxes(boxesAmount);
-      createBtn.style.background = "#6C8Cff";
-      setTimeout(() => (createBtn.style.background = "#4E75FF"), 100);
-    }
-  }
-});
-
-destroyBtn.addEventListener("click", () => {
-  createBoxes();
-  setTimeout(() => (destroyBtn.style.background = "#ff4e4e"), 100);
-});
-
 const createBoxes = amount => {
   const boxesHTML = Array.from({ length: amount }, (_, index) => {
     const size = 30 + index * 10;
@@ -65,3 +20,45 @@ const createBoxes = amount => {
   }).join("");
   boxesDiv.innerHTML = boxesHTML;
 };
+
+["click", "mouseover", "mouseout"].forEach(eventType => {
+  destroyBtn.addEventListener(eventType, () => {
+    if (eventType === "click")
+      createBoxes(), setTimeout(() => (destroyBtn.style.background = "#ff4e4e"), 100);
+    if (eventType === "mouseover")
+      boxesDiv.innerHTML && (destroyBtn.style.background = "#ff7070");
+    if (eventType === "mouseout") destroyBtn.style.background = "#ff4e4e";
+  });
+});
+
+["click", "mouseover", "mouseout"].forEach(eventType => {
+  createBtn.addEventListener(eventType, () => {
+    if (eventType === "click") boxesAmount && createBoxes(boxesAmount);
+    if (eventType === "mouseover") boxesAmount && (createBtn.style.background = "#6C8Cff");
+    if (eventType === "mouseout") createBtn.style.background = "#4E75FF";
+  });
+});
+
+["input", "keydown"].forEach(eventType => {
+  inputField.addEventListener(eventType, event => {
+    if (eventType === "input") {
+      event.preventDefault();
+      const value = Number(inputField.value);
+      if (value >= 0 && value <= 100) {
+        boxesAmount = value;
+      } else {
+        inputField.value = String(boxesAmount);
+      }
+    }
+
+    if (eventType === "keydown") {
+      if (event.key === "Enter") {
+        if (boxesAmount) {
+          createBoxes(boxesAmount);
+          createBtn.style.background = "#6C8Cff";
+          setTimeout(() => (createBtn.style.background = "#4E75FF"), 100);
+        }
+      }
+    }
+  });
+});
