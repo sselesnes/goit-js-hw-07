@@ -173,10 +173,6 @@ button {
   padding: 8px 16px;
 }
 
-#controls button[data-destroy] {
-  background-color: #ff4e4e;
-}
-
 #controls button {
   width: 120px;
 }
