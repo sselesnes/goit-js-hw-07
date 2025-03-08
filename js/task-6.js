@@ -59,13 +59,9 @@ destroyBtn.addEventListener("click", () => {
 });
 
 const createBoxes = amount => {
-  const boxesHTML = Array.from(
-    { length: amount },
-    (_, index) =>
-      `<div style="width: ${30 + index * 10}px;
-        height: ${30 + index * 10}px;
-        background-color: ${getRandomHexColor()};"></div>`
-  ).join("");
-
+  const boxesHTML = Array.from({ length: amount }, (_, index) => {
+    const size = 30 + index * 10;
+    return `<div style="width: ${size}px; height: ${size}px; background-color: ${getRandomHexColor()};"></div>`;
+  }).join("");
   boxesDiv.innerHTML = boxesHTML;
 };
