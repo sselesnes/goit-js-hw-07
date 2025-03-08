@@ -10,16 +10,16 @@ const destroyBtn = document.querySelector("[data-destroy]");
 const boxesDiv = document.querySelector("#boxes");
 
 inputField.focus();
-let boxesAmount = inputField.value;
+let boxesAmount = 0;
 let isBoxesExists = false;
 
 inputField.addEventListener("input", event => {
   event.preventDefault();
-  const value = inputField.value;
-  if (value === "" || (value > 0 && inputField.value <= 100)) {
-    boxesAmount = inputField.value;
+  const value = Number(inputField.value);
+  if (value >= 0 && value <= 100) {
+    boxesAmount = value;
   } else {
-    inputField.value = boxesAmount;
+    inputField.value = String(boxesAmount);
   }
 });
 
@@ -61,17 +61,20 @@ destroyBtn.addEventListener("click", () => {
 
 const createBoxes = amount => {
   destroyBoxes();
-  isBoxesExists = true;
+  const boxes = [];
   for (let i = 0; i < amount; i++) {
     const box = document.createElement("div");
     box.style.width = `${30 + i * 10}px`;
     box.style.height = `${30 + i * 10}px`;
     box.style.backgroundColor = getRandomHexColor();
-    boxesDiv.appendChild(box);
+    boxes.push(box);
   }
+  boxesDiv.innerHTML = "";
+  boxesDiv.append(...boxes);
+  isBoxesExists = true;
 };
 
 const destroyBoxes = () => {
-  isBoxesExists = false;
   boxesDiv.innerHTML = "";
+  isBoxesExists = false;
 };
