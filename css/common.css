@@ -139,7 +139,7 @@ button {
   margin-top: 8px;
 }
 
-#controls button:hover,
+/* #controls button:hover, */
 .change-color:hover,
 .login-form button:hover {
   background: #6c8cff;
@@ -160,6 +160,7 @@ button {
   row-gap: 16px;
 }
 
+#boxes,
 #controls {
   display: flex;
   flex-direction: row;
@@ -172,12 +173,17 @@ button {
 }
 
 #controls input {
-  max-width: 0;
-  padding: 8px 72px;
+  width: 150px;
+  text-align: center;
   flex-direction: column;
   background: #f6f6fe;
   border-radius: 8px;
 }
+
 #controls button {
   width: 120px;
+}
+
+#boxes {
+  margin-top: 16px;
 }
