@@ -123,6 +123,7 @@ input::placeholder {
 }
 
 button {
+  font-family: "Montserrat", sans-serif;
   height: 40px;
   border: none;
   border-radius: 8px;
@@ -138,6 +139,20 @@ button {
   margin-top: 8px;
 }
 
+#controls button:hover,
+.change-color:hover,
+.login-form button:hover {
+  background: #6c8cff;
+}
+
+#controls button[data-destroy] {
+  background-color: #ff4e4e;
+}
+
+#controls button[data-destroy]:hover {
+  background-color: #ff7070;
+}
+
 .widget {
   display: flex;
   flex-direction: column;
@@ -145,7 +160,24 @@ button {
   row-gap: 16px;
 }
 
-.change-color:hover,
-.login-form button:hover {
-  background: #6c8cff;
+#controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 16px;
+  border-radius: 8px;
+  background: #f6f6fe;
+  padding: 32px;
+}
+
+#controls input {
+  max-width: 0;
+  padding: 8px 72px;
+  flex-direction: column;
+  background: #f6f6fe;
+  border-radius: 8px;
+}
+#controls button {
+  width: 120px;
 }
