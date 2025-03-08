@@ -122,37 +122,6 @@ input::placeholder {
   margin-top: 8px;
 }
 
-button {
-  font-family: "Montserrat", sans-serif;
-  height: 40px;
-  border: none;
-  border-radius: 8px;
-  background: #4e75ff;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 0.64px;
-  padding: 8px 16px;
-}
-
-.login-form button {
-  margin-top: 8px;
-}
-
-/* #controls button:hover, */
-.change-color:hover,
-.login-form button:hover {
-  background: #6c8cff;
-}
-
-#controls button[data-destroy] {
-  background-color: #ff4e4e;
-}
-
-#controls button[data-destroy]:hover {
-  background-color: #ff7070;
-}
-
 .widget {
   display: flex;
   flex-direction: column;
@@ -180,10 +149,38 @@ button {
   border-radius: 8px;
 }
 
+#boxes {
+  flex-wrap: wrap;
+  row-gap: 16px;
+  margin-top: 16px;
+}
+
+button {
+  font-family: "Montserrat", sans-serif;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background: #4e75ff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.64px;
+  padding: 8px 16px;
+}
+
+#controls button[data-destroy] {
+  background-color: #ff4e4e;
+}
+
 #controls button {
   width: 120px;
 }
 
-#boxes {
-  margin-top: 16px;
+.login-form button {
+  margin-top: 8px;
+}
+
+.change-color:hover,
+.login-form button:hover {
+  background: #6c8cff;
 }

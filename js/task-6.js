@@ -7,23 +7,32 @@ function getRandomHexColor() {
 const inputField = document.querySelector("#controls input");
 const createBtn = document.querySelector("[data-create]");
 const destroyBtn = document.querySelector("[data-destroy]");
-const boxes = document.querySelector("#boxes");
+const boxesDiv = document.querySelector("#boxes");
 
 inputField.focus();
-let previousValue = inputField.value;
+let boxesAmount = inputField.value;
+let isBoxesExists = false;
 
 inputField.addEventListener("input", event => {
   event.preventDefault();
   const value = inputField.value;
   if (value === "" || (value > 0 && inputField.value <= 100)) {
-    previousValue = inputField.value;
+    boxesAmount = inputField.value;
   } else {
-    inputField.value = previousValue;
+    inputField.value = boxesAmount;
   }
 });
 
+destroyBtn.addEventListener("mouseover", () => {
+  isBoxesExists && (destroyBtn.style.background = "#ff7070");
+});
+
+destroyBtn.addEventListener("mouseout", () => {
+  destroyBtn.style.background = "#ff4e4e";
+});
+
 createBtn.addEventListener("mouseover", () => {
-  previousValue && (createBtn.style.background = "#6C8Cff");
+  boxesAmount && (createBtn.style.background = "#6C8Cff");
 });
 
 createBtn.addEventListener("mouseout", () => {
@@ -31,13 +40,36 @@ createBtn.addEventListener("mouseout", () => {
 });
 
 createBtn.addEventListener("click", () => {
-  previousValue && createBoxes(previousValue);
+  boxesAmount && createBoxes(boxesAmount);
+});
+
+inputField.addEventListener("keydown", event => {
+  if (event.key === "Enter") {
+    boxesAmount && createBoxes(boxesAmount);
+    createBtn.style.background = "#6C8Cff";
+    setTimeout(() => {
+      createBtn.style.background = "#4E75FF";
+    }, 100);
+  }
 });
 
 destroyBtn.addEventListener("click", () => {
-  console.log(`destroy`);
+  destroyBoxes();
 });
 
 const createBoxes = amount => {
-  console.log(amount);
+  destroyBoxes();
+  isBoxesExists = true;
+  for (let i = 0; i < amount; i++) {
+    const box = document.createElement("div");
+    box.style.width = `${30 + i * 10}px`;
+    box.style.height = `${30 + i * 10}px`;
+    box.style.backgroundColor = getRandomHexColor();
+    boxesDiv.appendChild(box);
+  }
+};
+
+const destroyBoxes = () => {
+  isBoxesExists = false;
+  boxesDiv.innerHTML = "";
 };
