@@ -77,6 +77,10 @@ ul {
   gap: 8px;
 }
 
+h1:has(#name-output) {
+  margin-top: 16px;
+}
+
 input,
 #categories .item ul li {
   display: flex;
@@ -88,12 +92,20 @@ input,
   padding: 8px 16px;
 }
 
-h1:has(#name-output) {
-  margin-top: 16px;
+input:hover {
+  border: 1px solid #000;
+}
+
+input:focus-visible {
+  border: 1px solid #808080;
+  outline: none;
 }
 
 input,
 input::placeholder {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  letter-spacing: 0.64px;
   font-size: 16px;
   font-weight: 400;
   color: #2e2f42;
@@ -120,4 +132,8 @@ input::placeholder {
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 0.64px;
+}
+
+.login-form button:hover {
+  background: #6c8cff;
 }
