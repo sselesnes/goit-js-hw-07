@@ -45,11 +45,13 @@ createBtn.addEventListener("click", () => {
 
 inputField.addEventListener("keydown", event => {
   if (event.key === "Enter") {
-    boxesAmount && createBoxes(boxesAmount);
-    createBtn.style.background = "#6C8Cff";
-    setTimeout(() => {
-      createBtn.style.background = "#4E75FF";
-    }, 100);
+    if (boxesAmount) {
+      createBoxes(boxesAmount);
+      createBtn.style.background = "#6C8Cff";
+      setTimeout(() => {
+        createBtn.style.background = "#4E75FF";
+      }, 100);
+    }
   }
 });
 
