@@ -27,6 +27,7 @@ const createBoxes = amount => {
     if (eventType === "pointerover") boxesAmount && (createBtn.style.background = "#6C8Cff");
     if (eventType === "pointerout")
       setTimeout(() => (createBtn.style.background = "#4E75FF"), 100);
+    inputField.focus();
   });
 });
 
@@ -37,6 +38,7 @@ const createBoxes = amount => {
     if (eventType === "mouseover")
       boxesDiv.innerHTML && (destroyBtn.style.background = "#ff7070");
     if (eventType === "mouseout") destroyBtn.style.background = "#ff4e4e";
+    inputField.focus();
   });
 });
 
