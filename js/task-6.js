@@ -39,8 +39,7 @@ const createBoxes = amount => {
   });
 });
 
-inputField.addEventListener("input", event => {
-  event.preventDefault();
+inputField.addEventListener("input", () => {
   const value = Number(inputField.value);
   if (value >= 0 && value <= 100) {
     boxesAmount = value;
