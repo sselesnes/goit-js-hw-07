@@ -8,7 +8,6 @@ const inputField = document.querySelector("#controls input");
 const createBtn = document.querySelector("[data-create]");
 const destroyBtn = document.querySelector("[data-destroy]");
 const boxesDiv = document.querySelector("#boxes");
-// const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
 
 inputField.focus();
 destroyBtn.style.background = "#ff4e4e";
