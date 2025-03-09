@@ -181,7 +181,16 @@ button {
   margin-top: 8px;
 }
 
-.change-color:hover,
-.login-form button:hover {
-  background: #6c8cff;
+@media (pointer: fine) {
+  .change-color:hover,
+  .login-form button:hover {
+    background: #6c8cff;
+  }
+}
+
+@media (pointer: coarse) {
+  .change-color:active,
+  .login-form button:active {
+    background: #6c8cff;
+  }
 }

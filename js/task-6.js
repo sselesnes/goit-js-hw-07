@@ -22,6 +22,14 @@ const createBoxes = amount => {
 };
 
 ["click", "mouseover", "mouseout"].forEach(eventType => {
+  createBtn.addEventListener(eventType, () => {
+    if (eventType === "click") boxesAmount && createBoxes(boxesAmount);
+    if (eventType === "mouseover") boxesAmount && (createBtn.style.background = "#6C8Cff");
+    if (eventType === "mouseout") createBtn.style.background = "#4E75FF";
+  });
+});
+
+["click", "mouseover", "mouseout"].forEach(eventType => {
   destroyBtn.addEventListener(eventType, () => {
     if (eventType === "click")
       createBoxes(), setTimeout(() => (destroyBtn.style.background = "#ff4e4e"), 100);
@@ -31,34 +39,22 @@ const createBoxes = amount => {
   });
 });
 
-["click", "mouseover", "mouseout"].forEach(eventType => {
-  createBtn.addEventListener(eventType, () => {
-    if (eventType === "click") boxesAmount && createBoxes(boxesAmount);
-    if (eventType === "mouseover") boxesAmount && (createBtn.style.background = "#6C8Cff");
-    if (eventType === "mouseout") createBtn.style.background = "#4E75FF";
-  });
+inputField.addEventListener("input", event => {
+  event.preventDefault();
+  const value = Number(inputField.value);
+  if (value >= 0 && value <= 100) {
+    boxesAmount = value;
+  } else {
+    inputField.value = String(boxesAmount);
+  }
 });
 
-["input", "keydown"].forEach(eventType => {
-  inputField.addEventListener(eventType, event => {
-    if (eventType === "input") {
-      event.preventDefault();
-      const value = Number(inputField.value);
-      if (value >= 0 && value <= 100) {
-        boxesAmount = value;
-      } else {
-        inputField.value = String(boxesAmount);
-      }
+inputField.addEventListener("keydown", event => {
+  if (event.key === "Enter") {
+    if (boxesAmount) {
+      createBoxes(boxesAmount);
+      createBtn.style.background = "#6C8Cff";
+      setTimeout(() => (createBtn.style.background = "#4E75FF"), 100);
     }
-
-    if (eventType === "keydown") {
-      if (event.key === "Enter") {
-        if (boxesAmount) {
-          createBoxes(boxesAmount);
-          createBtn.style.background = "#6C8Cff";
-          setTimeout(() => (createBtn.style.background = "#4E75FF"), 100);
-        }
-      }
-    }
-  });
+  }
 });
