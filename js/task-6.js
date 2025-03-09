@@ -8,6 +8,7 @@ const inputField = document.querySelector("#controls input");
 const createBtn = document.querySelector("[data-create]");
 const destroyBtn = document.querySelector("[data-destroy]");
 const boxesDiv = document.querySelector("#boxes");
+// const isCoarsePointer = window.matchMedia("(pointer: coarse)").matches;
 
 inputField.focus();
 destroyBtn.style.background = "#ff4e4e";
@@ -21,11 +22,12 @@ const createBoxes = amount => {
   boxesDiv.innerHTML = boxesHTML;
 };
 
-["click", "mouseover", "mouseout"].forEach(eventType => {
+["click", "pointerover", "pointerout"].forEach(eventType => {
   createBtn.addEventListener(eventType, () => {
     if (eventType === "click") boxesAmount && createBoxes(boxesAmount);
-    if (eventType === "mouseover") boxesAmount && (createBtn.style.background = "#6C8Cff");
-    if (eventType === "mouseout") createBtn.style.background = "#4E75FF";
+    if (eventType === "pointerover") boxesAmount && (createBtn.style.background = "#6C8Cff");
+    if (eventType === "pointerout")
+      setTimeout(() => (createBtn.style.background = "#4E75FF"), 100);
   });
 });
 
