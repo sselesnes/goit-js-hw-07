@@ -125,7 +125,8 @@ input::placeholder {
   max-width: 100%;
 }
 
-.login-form input {
+.login-form input,
+.login-form button {
   margin-top: 8px;
 }
 
@@ -150,7 +151,8 @@ input::placeholder {
 }
 
 #controls input {
-  width: 150px;
+  max-width: 150px;
+  width: 100%;
   text-align: center;
   flex-direction: column;
   background: #f6f6fe;
@@ -187,10 +189,6 @@ button[data-destroy] {
 
 #controls button {
   width: 120px;
-}
-
-.login-form button {
-  margin-top: 8px;
 }
 
 @media (pointer: fine) {
