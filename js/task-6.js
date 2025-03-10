@@ -1,20 +1,17 @@
-function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, 0)}`;
-}
+"use strict";
 
 const inputField = document.querySelector("#controls input");
 const createBtn = document.querySelector("[data-create]");
 const destroyBtn = document.querySelector("[data-destroy]");
 const boxesDiv = document.querySelector("#boxes");
-inputField.focus();
-let boxesAmount = 0;
-destroyBtn.style.background = "#ff4e4e";
 
-inputField.addEventListener("blur", () => {
-  inputField.focus();
-});
+inputField.focus();
+let boxesAmount;
+
+const getRandomHexColor = () =>
+  `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
 
 const createBoxes = amount => {
   const boxesHTML = Array.from({ length: amount }, (_, index) => {
@@ -60,4 +57,8 @@ inputField.addEventListener("keydown", event => {
       setTimeout(() => (createBtn.style.background = "#4E75FF"), 100);
     }
   }
+});
+
+inputField.addEventListener("blur", () => {
+  inputField.focus();
 });
