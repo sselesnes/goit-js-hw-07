@@ -119,6 +119,10 @@ input::placeholder {
   row-gap: 8px;
 }
 
+.login-form label {
+  max-width: 100%;
+}
+
 .login-form input {
   margin-top: 8px;
 }
@@ -134,9 +138,10 @@ input::placeholder {
 #controls {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  column-gap: 16px;
+  gap: 16px;
   border-radius: 8px;
   background: #f6f6fe;
   padding: 32px;
