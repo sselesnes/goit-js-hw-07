@@ -67,7 +67,6 @@ document.querySelector("body").addEventListener("keydown", () => {
 
 boxesDiv.addEventListener("click", event => {
   if (event.target !== event.currentTarget) {
-    const currentDiv = event.target.innerHTML;
     const currentColor = event.target.style.backgroundColor;
     const currentIndex = Array.from(boxesDiv.querySelectorAll("div")).indexOf(event.target);
 
@@ -77,12 +76,9 @@ boxesDiv.addEventListener("click", event => {
     );
 
     event.target.style.backgroundColor = tinycolor(currentColor).lighten(10).toString();
-    setTimeout(
-      () => (
-        (event.target.innerHTML = currentDiv),
-        (event.target.style.backgroundColor = currentColor)
-      ),
-      250
-    );
+    setTimeout(() => {
+      event.target.style.backgroundColor = currentColor;
+      event.target.querySelectorAll("p").forEach(p => p.remove());
+    }, 250);
   }
 });
