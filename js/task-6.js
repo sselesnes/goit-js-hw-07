@@ -60,3 +60,28 @@ inputField.addEventListener("keydown", event => {
 inputField.addEventListener("blur", () => {
   inputField.focus();
 });
+
+// post hw
+// finds element number from div array by click
+// includes external tinycolor library
+boxesDiv.addEventListener("click", event => {
+  if (event.target !== event.currentTarget) {
+    const currentDiv = event.target.innerHTML;
+    const currentColor = event.target.style.backgroundColor;
+    const currentIndex = Array.from(boxesDiv.querySelectorAll("div")).indexOf(event.target);
+
+    event.target.insertAdjacentHTML(
+      "afterbegin",
+      `<p style="display: flex; justify-content: center; align-items: center; height: 100%; margin: 0;">${currentIndex}</p><p style="text-align: center; font-size: 8px;">${currentColor}</p>`
+    );
+
+    event.target.style.backgroundColor = tinycolor(currentColor).lighten(10).toString();
+    setTimeout(
+      () => (
+        (event.target.innerHTML = currentDiv),
+        (event.target.style.backgroundColor = currentColor)
+      ),
+      250
+    );
+  }
+});
