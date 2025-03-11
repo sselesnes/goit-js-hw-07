@@ -57,13 +57,14 @@ inputField.addEventListener("keydown", event => {
   }
 });
 
-inputField.addEventListener("blur", () => {
+document.querySelector("body").addEventListener("keydown", () => {
   inputField.focus();
 });
 
 // post hw
 // finds element number from div array by click
 // includes external tinycolor library
+
 boxesDiv.addEventListener("click", event => {
   if (event.target !== event.currentTarget) {
     const currentDiv = event.target.innerHTML;
