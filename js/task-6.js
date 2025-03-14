@@ -142,7 +142,7 @@ const exploreSessionStorage = () => {
     const keys = Object.keys(sessionStorage);
     const values = Object.values(sessionStorage);
     let keyValuePairs = keys.map((key, index) => ({
-      key: key.toString().padStart(3, "0"),
+      key: key.toString().padStart(5, "0"),
       value: values[index],
     }));
     keyValuePairs = keyValuePairs
