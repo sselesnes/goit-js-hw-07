@@ -118,10 +118,7 @@ boxesDiv.addEventListener("click", event => {
 });
 
 const updateSessionStorage = () => {
-  sessionStorage.setItem(
-    `boxes#${String(sessionStorage.length.toString().padStart(2, "0"))}`,
-    JSON.stringify(boxesArray)
-  );
+  sessionStorage.setItem(sessionStorage.length, JSON.stringify(boxesArray));
   boxesArray.length = 0;
 };
 
@@ -144,9 +141,12 @@ const exploreSessionStorage = () => {
     boxesDiv.innerHTML = "";
     const keys = Object.keys(sessionStorage);
     const values = Object.values(sessionStorage);
-    let keyValuePairs = keys.map((key, index) => ({ key, value: values[index] }));
+    let keyValuePairs = keys.map((key, index) => ({
+      key: `boxes ${key.toString().padStart(2, "0")}`,
+      value: values[index],
+    }));
     keyValuePairs = keyValuePairs
-      .filter(pair => pair.key !== "IsThisFirstTime_Log_From_LiveServer")
+      .filter(pair => pair.key !== "boxes IsThisFirstTime_Log_From_LiveServer")
       .sort((a, b) => a.key.localeCompare(b.key));
 
     const table = document.createElement("table");

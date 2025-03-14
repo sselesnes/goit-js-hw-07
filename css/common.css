@@ -165,9 +165,11 @@ table {
 }
 th,
 td {
+  text-align: center;
   padding: 8px;
 }
 td:nth-child(even) {
+  text-align: start;
   word-break: break-all;
 }
 
