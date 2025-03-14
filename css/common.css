@@ -187,4 +187,8 @@ td:nth-child(even) {
   .login-form button:active {
     background: #6c8cff;
   }
+  #boxes,
+  #controls {
+    padding: 18px;
+  }
 }
