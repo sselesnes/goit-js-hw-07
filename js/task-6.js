@@ -31,7 +31,11 @@ const createBoxes = amount => {
         updateSessionStorage();
       }
     }
-    if (eventType === "pointerover") boxesAmount && (createBtn.style.background = "#6C8Cff");
+    if (eventType === "pointerover")
+      boxesAmount &&
+        (createBtn.style.background = tinycolor(getComputedStyle(createBtn).backgroundColor)
+          .lighten(9)
+          .toString());
     if (eventType === "pointerout")
       setTimeout(() => (createBtn.style.background = "#4E75FF"), 100);
   });
@@ -44,7 +48,10 @@ const createBoxes = amount => {
       createBoxes(), setTimeout(() => (destroyBtn.style.background = "#ff4e4e"), 100);
     }
     if (eventType === "mouseover")
-      boxesDiv.innerHTML && (destroyBtn.style.background = "#ff7070");
+      boxesDiv.innerHTML &&
+        (destroyBtn.style.background = tinycolor(getComputedStyle(destroyBtn).backgroundColor)
+          .lighten(9)
+          .toString());
     if (eventType === "mouseout") destroyBtn.style.background = "#ff4e4e";
   });
 });
@@ -63,7 +70,9 @@ inputField.addEventListener("keydown", event => {
     if (boxesAmount) {
       createBoxes(boxesAmount);
       updateSessionStorage();
-      createBtn.style.background = "#6C8Cff";
+      createBtn.style.background = tinycolor(getComputedStyle(createBtn).backgroundColor)
+        .lighten(9)
+        .toString();
       setTimeout(() => (createBtn.style.background = "#4E75FF"), 100);
     }
   }
@@ -87,7 +96,7 @@ boxesDiv.addEventListener("click", event => {
       `<p style="display: flex; justify-content: center; align-items: center; height: 100%; margin: 0;">${currentIndex}</p><p style="text-align: center; font-size: 8px;">${currentColor}</p>`
     );
 
-    event.target.style.backgroundColor = tinycolor(currentColor).lighten(10).toString();
+    event.target.style.backgroundColor = tinycolor(currentColor).lighten(10).toString9;
     setTimeout(() => {
       event.target.style.backgroundColor = currentColor;
       event.target.querySelectorAll("p").forEach(p => p.remove());
@@ -96,16 +105,22 @@ boxesDiv.addEventListener("click", event => {
 });
 
 const updateSessionStorage = () => {
-  sessionStorage.setItem(`boxesArray${sessionStorage.length}`, JSON.stringify(boxesArray));
+  sessionStorage.setItem(
+    `boxes#${String(sessionStorage.length.toString().padStart(2, "0"))}`,
+    JSON.stringify(boxesArray)
+  );
   boxesArray.length = 0;
 };
 
 ["click", "pointerover", "pointerout"].forEach(eventType => {
   exploreBtn.addEventListener(eventType, () => {
-    if (eventType === "click" && exploreSessionStorage()) {
+    eventType === "click" && exploreSessionStorage();
+    if (eventType === "pointerover") {
+      if (sessionStorage.length > 1)
+        exploreBtn.style.background = tinycolor(getComputedStyle(exploreBtn).backgroundColor)
+          .lighten(9)
+          .toString();
     }
-    if (eventType === "pointerover")
-      sessionStorage.length > 1 && (exploreBtn.style.background = "#75B9D1");
     if (eventType === "pointerout")
       setTimeout(() => (exploreBtn.style.background = "#69A7BC"), 100);
   });
