@@ -142,11 +142,11 @@ const exploreSessionStorage = () => {
     const keys = Object.keys(sessionStorage);
     const values = Object.values(sessionStorage);
     let keyValuePairs = keys.map((key, index) => ({
-      key: `boxes ${key.toString().padStart(2, "0")}`,
+      key: key.toString().padStart(3, "0"),
       value: values[index],
     }));
     keyValuePairs = keyValuePairs
-      .filter(pair => pair.key !== "boxes IsThisFirstTime_Log_From_LiveServer")
+      .filter(pair => pair.key !== "IsThisFirstTime_Log_From_LiveServer")
       .sort((a, b) => a.key.localeCompare(b.key));
 
     const table = document.createElement("table");
@@ -160,7 +160,7 @@ const exploreSessionStorage = () => {
     const body = table.createTBody();
     keyValuePairs.forEach((pair, index) => {
       const row = body.insertRow(index);
-      row.insertCell(0).innerText = pair.key;
+      row.insertCell(0).innerText = `boxes ${Number(pair.key)}`;
       row.insertCell(1).innerText = pair.value.slice(1, -1).replace(/["",]/g, " ");
     });
 
