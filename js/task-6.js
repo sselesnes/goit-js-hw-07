@@ -94,7 +94,16 @@ boxesDiv.addEventListener("click", event => {
 
     event.target.insertAdjacentHTML(
       "afterbegin",
-      `<p style="display: flex; justify-content: center; align-items: center; height: 100%; margin: 0;">${currentIndex}</p><p style="text-align: center; font-size: 8px;">${currentColor}</p>`
+      `<p style="display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          margin: 0;">
+          ${currentIndex}</p>
+       <p style="text-align: center;
+          margin: 0;
+          font-size: 8px;">
+          ${currentColor}</p>`
     );
 
     event.target.style.backgroundColor = tinycolor(currentColor).lighten(9).toString();
