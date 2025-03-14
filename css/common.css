@@ -3,7 +3,6 @@
 * {
   box-sizing: border-box;
 }
-
 body {
   margin: 24px;
   font-family: "Montserrat", sans-serif;
@@ -15,11 +14,9 @@ body {
   background-color: #fff;
   color: #2e2f42;
 }
-
 body > p {
   margin-bottom: 24px;
 }
-
 h1,
 h2,
 h3,
@@ -30,44 +27,36 @@ ul,
 p {
   margin: 0;
 }
-
 h1 {
   font-size: 24px;
   font-weight: 600;
 }
-
 h1:has(#name-output) {
   margin-top: 16px;
 }
-
 ul {
   list-style: none;
   padding: 0;
 }
-
 .gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 48px 24px;
 }
-
 .gallery-image {
   width: 360px;
   height: 300px;
   object-fit: cover;
 }
-
 .gallery li {
   height: 300px;
 }
-
 #categories ul {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-
 #categories .item {
   max-width: 392px;
   background-color: #f6f6f6;
@@ -75,18 +64,15 @@ ul {
   margin-bottom: 24px;
   padding: 16px;
 }
-
 #categories li h2 {
   margin-bottom: 16px;
 }
-
 .login-form {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   row-gap: 8px;
 }
-
 #categories .item ul li,
 input {
   display: flex;
@@ -98,7 +84,6 @@ input {
   border: 1px solid #808080;
   padding: 8px 16px;
 }
-
 input,
 input::placeholder {
   font-family: "Montserrat", sans-serif;
@@ -108,36 +93,29 @@ input::placeholder {
   font-weight: 400;
   color: #2e2f42;
 }
-
 input:hover {
   border: 1px solid #000;
 }
-
 input:focus-visible {
   border: 1px solid #808080;
   outline: none;
 }
-
 .login-form label {
   max-width: 100%;
 }
-
 .login-form input,
 .login-form button {
   margin-top: 8px;
 }
-
 .widget {
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 16px;
 }
-
 #boxes {
   margin-top: 16px;
 }
-
 #boxes,
 #controls {
   display: flex;
@@ -149,7 +127,6 @@ input:focus-visible {
   background: #f6f6fe;
   padding: 32px;
 }
-
 #controls input {
   max-width: 150px;
   width: 100%;
@@ -157,12 +134,10 @@ input:focus-visible {
   background: #f6f6fe;
   border-radius: 8px;
 }
-
 #controls input::-webkit-outer-spin-button,
 #controls input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
-
 button {
   font-family: "Montserrat", sans-serif;
   height: 40px;
@@ -175,24 +150,22 @@ button {
   letter-spacing: 0.64px;
   padding: 8px 16px;
 }
-
 button[data-destroy] {
   background-color: #ff4e4e;
 }
-
+button[data-explore] {
+  background-color: #69a7bc;
+}
 #controls button {
   width: 120px;
 }
-
 table {
   width: 100%;
   border-collapse: collapse;
 }
-
 th {
   padding: 8px;
 }
-
 td:nth-child(even) {
   word-wrap: break-word; /* Ensures text wraps within the cell */
   overflow-wrap: break-word; /* Alternative for better browser support */

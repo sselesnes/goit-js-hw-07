@@ -28,51 +28,12 @@ const createBoxes = amount => {
     if (eventType === "click") {
       if (boxesAmount) {
         createBoxes(boxesAmount);
-        sessionStorage.setItem(
-          `boxesArray${sessionStorage.length}`,
-          JSON.stringify(boxesArray)
-        );
-        boxesArray.length = 0;
+        updateSessionStorage();
       }
     }
     if (eventType === "pointerover") boxesAmount && (createBtn.style.background = "#6C8Cff");
     if (eventType === "pointerout")
       setTimeout(() => (createBtn.style.background = "#4E75FF"), 100);
-  });
-});
-
-["click", "pointerover", "pointerout"].forEach(eventType => {
-  exploreBtn.addEventListener(eventType, () => {
-    if (eventType === "click" && sessionStorage.length > 1) {
-      boxesDiv.innerHTML = "";
-      const keys = Object.keys(sessionStorage);
-      const values = Object.values(sessionStorage);
-      let keyValuePairs = keys.map((key, index) => ({ key, value: values[index] }));
-      keyValuePairs = keyValuePairs
-        .filter(pair => pair.key !== "IsThisFirstTime_Log_From_LiveServer")
-        .sort((a, b) => a.key.localeCompare(b.key));
-
-      const table = document.createElement("table");
-      table.border = 1;
-
-      const header = table.createTHead();
-      const row = header.insertRow(0);
-      row.insertCell(0).outerHTML = "<th>Key</th>";
-      row.insertCell(1).outerHTML = "<th>Value</th>";
-
-      const body = table.createTBody();
-      keyValuePairs.forEach((pair, index) => {
-        const row = body.insertRow(index);
-        row.insertCell(0).innerText = pair.key;
-        row.insertCell(1).innerText = pair.value;
-      });
-
-      boxesDiv.appendChild(table);
-    }
-    if (eventType === "pointerover")
-      sessionStorage.length > 1 && (exploreBtn.style.background = "#6C8Cff");
-    if (eventType === "pointerout")
-      setTimeout(() => (exploreBtn.style.background = "#4E75FF"), 100);
   });
 });
 
@@ -101,6 +62,7 @@ inputField.addEventListener("keydown", event => {
   if (event.key === "Enter") {
     if (boxesAmount) {
       createBoxes(boxesAmount);
+      updateSessionStorage();
       createBtn.style.background = "#6C8Cff";
       setTimeout(() => (createBtn.style.background = "#4E75FF"), 100);
     }
@@ -132,3 +94,48 @@ boxesDiv.addEventListener("click", event => {
     }, 250);
   }
 });
+
+const updateSessionStorage = () => {
+  sessionStorage.setItem(`boxesArray${sessionStorage.length}`, JSON.stringify(boxesArray));
+  boxesArray.length = 0;
+};
+
+["click", "pointerover", "pointerout"].forEach(eventType => {
+  exploreBtn.addEventListener(eventType, () => {
+    if (eventType === "click" && exploreSessionStorage()) {
+    }
+    if (eventType === "pointerover")
+      sessionStorage.length > 1 && (exploreBtn.style.background = "#75B9D1");
+    if (eventType === "pointerout")
+      setTimeout(() => (exploreBtn.style.background = "#69A7BC"), 100);
+  });
+});
+
+const exploreSessionStorage = () => {
+  if (sessionStorage.length > 1) {
+    boxesDiv.innerHTML = "";
+    const keys = Object.keys(sessionStorage);
+    const values = Object.values(sessionStorage);
+    let keyValuePairs = keys.map((key, index) => ({ key, value: values[index] }));
+    keyValuePairs = keyValuePairs
+      .filter(pair => pair.key !== "IsThisFirstTime_Log_From_LiveServer")
+      .sort((a, b) => a.key.localeCompare(b.key));
+
+    const table = document.createElement("table");
+    table.border = 1;
+
+    const header = table.createTHead();
+    const row = header.insertRow(0);
+    row.insertCell(0).outerHTML = "<th>Key</th>";
+    row.insertCell(1).outerHTML = "<th>Value</th>";
+
+    const body = table.createTBody();
+    keyValuePairs.forEach((pair, index) => {
+      const row = body.insertRow(index);
+      row.insertCell(0).innerText = pair.key;
+      row.insertCell(1).innerText = pair.value;
+    });
+
+    boxesDiv.appendChild(table);
+  }
+};
