@@ -18,7 +18,10 @@ const createBoxes = amount => {
     const size = 30 + index * 10;
     const randomColor = getRandomHexColor();
     boxesArray.push(randomColor);
-    return `<div style="width: ${size}px; height: ${size}px; background-color: ${randomColor};"></div>`;
+    return `<div style="width: ${size}px;
+              height: ${size}px;
+              background-color: ${randomColor};">
+            </div>`;
   }).join("");
   boxesDiv.innerHTML = boxesHTML;
 };
@@ -99,11 +102,11 @@ boxesDiv.addEventListener("click", event => {
           align-items: center;
           height: 100%;
           margin: 0;">
-          ${currentIndex}</p>
+        ${currentIndex}</p>
        <p style="text-align: center;
           margin: 0;
           font-size: 8px;">
-          ${currentColor}</p>`
+        ${currentColor}</p>`
     );
 
     event.target.style.backgroundColor = tinycolor(currentColor).lighten(9).toString();
