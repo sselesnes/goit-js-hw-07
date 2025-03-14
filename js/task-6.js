@@ -82,8 +82,9 @@ document.querySelector("body").addEventListener("keydown", () => {
   inputField.focus();
 });
 
-// post hw
+// post home work
 // finds element number from div array by click
+// shows history by session storage
 // includes external tinycolor library
 
 boxesDiv.addEventListener("click", event => {
@@ -96,7 +97,7 @@ boxesDiv.addEventListener("click", event => {
       `<p style="display: flex; justify-content: center; align-items: center; height: 100%; margin: 0;">${currentIndex}</p><p style="text-align: center; font-size: 8px;">${currentColor}</p>`
     );
 
-    event.target.style.backgroundColor = tinycolor(currentColor).lighten(10).toString9;
+    event.target.style.backgroundColor = tinycolor(currentColor).lighten(9).toString();
     setTimeout(() => {
       event.target.style.backgroundColor = currentColor;
       event.target.querySelectorAll("p").forEach(p => p.remove());
