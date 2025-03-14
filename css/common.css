@@ -168,11 +168,7 @@ td {
   padding: 8px;
 }
 td:nth-child(even) {
-  word-wrap: break-word; /* Ensures text wraps within the cell */
-  overflow-wrap: break-word; /* Alternative for better browser support */
-  word-break: break-all; /* Ensures long words break */
-  white-space: normal; /* Allows text to wrap */
-  padding: 8px;
+  word-break: break-all;
 }
 
 @media (pointer: fine) {
