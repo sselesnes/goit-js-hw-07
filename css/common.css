@@ -165,12 +165,14 @@ table {
 }
 th,
 td {
+  font-family: monospace;
   text-align: center;
   padding: 8px;
 }
 td:nth-child(even) {
   text-align: start;
-  word-break: break-all;
+  word-break: break-word;
+  white-space: normal;
 }
 
 @media (pointer: fine) {
