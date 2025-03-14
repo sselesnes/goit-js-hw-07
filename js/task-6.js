@@ -160,7 +160,7 @@ const exploreSessionStorage = () => {
     const body = table.createTBody();
     keyValuePairs.forEach((pair, index) => {
       const row = body.insertRow(index);
-      row.insertCell(0).innerText = `boxes ${Number(pair.key)}`;
+      row.insertCell(0).innerText = `boxes ${Number(pair.key) + 1}`;
       row.insertCell(1).innerText = pair.value.slice(1, -1).replace(/["",]/g, " ");
     });
 
