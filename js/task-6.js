@@ -136,7 +136,7 @@ function updateSessionStorage() {
         if (eventType === "pointerover")
           exploreBtn.style.background = tinycolor(getComputedStyle(exploreBtn).backgroundColor)
             .lighten(9)
-            .toString(); // "#89BACA";
+            .toString();
         if (eventType === "pointerout")
           setTimeout(() => (exploreBtn.style.background = "#69A7BC"), 100);
       });
