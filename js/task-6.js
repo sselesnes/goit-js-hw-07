@@ -1,17 +1,13 @@
 const inputField = document.querySelector("#controls input");
 const createBtn = document.querySelector("[data-create]");
 const destroyBtn = document.querySelector("[data-destroy]");
+let exploreBtn = document.querySelector("[data-explore]");
 const boxesDiv = document.querySelector("#boxes");
-
-const exploreBtn = document.createElement("button");
-exploreBtn.type = "button";
-exploreBtn.dataset.explore = "";
-exploreBtn.textContent = "Results";
-destroyBtn.insertAdjacentElement("afterend", exploreBtn);
 
 inputField.focus();
 let boxesAmount;
 let boxesArray = [];
+updateSessionStorage();
 
 const getRandomHexColor = () =>
   `#${Math.floor(Math.random() * 16777215)
@@ -122,24 +118,31 @@ boxesDiv.addEventListener("click", event => {
   }
 });
 
-const updateSessionStorage = () => {
-  sessionStorage.setItem(sessionStorage.length, JSON.stringify(boxesArray));
+function updateSessionStorage() {
+  boxesArray.length &&
+    sessionStorage.setItem(sessionStorage.length, JSON.stringify(boxesArray));
   boxesArray.length = 0;
-};
 
-["click", "pointerover", "pointerout"].forEach(eventType => {
-  exploreBtn.addEventListener(eventType, () => {
-    eventType === "click" && exploreSessionStorage();
-    if (eventType === "pointerover") {
-      if (sessionStorage.length > 1)
-        exploreBtn.style.background = tinycolor(getComputedStyle(exploreBtn).backgroundColor)
-          .lighten(9)
-          .toString();
-    }
-    if (eventType === "pointerout")
-      setTimeout(() => (exploreBtn.style.background = "#69A7BC"), 100);
-  });
-});
+  if (sessionStorage.length > 1 && !exploreBtn) {
+    exploreBtn = document.createElement("button");
+    exploreBtn.type = "button";
+    exploreBtn.dataset.explore = "";
+    exploreBtn.textContent = "Results";
+    destroyBtn.insertAdjacentElement("afterend", exploreBtn);
+
+    ["click", "pointerover", "pointerout"].forEach(eventType => {
+      exploreBtn.addEventListener(eventType, () => {
+        eventType === "click" && exploreSessionStorage();
+        if (eventType === "pointerover") {
+          if (sessionStorage.length > 1)
+            exploreBtn.style.background = tinycolor("#69A7BC").lighten(9).toString();
+        }
+        if (eventType === "pointerout")
+          setTimeout(() => (exploreBtn.style.background = "#69A7BC"), 100);
+      });
+    });
+  }
+}
 
 const exploreSessionStorage = () => {
   if (sessionStorage.length > 1) {
@@ -165,7 +168,7 @@ const exploreSessionStorage = () => {
     const body = table.createTBody();
     keyValuePairs.forEach((pair, index) => {
       const row = body.insertRow(index);
-      row.insertCell(0).innerText = `boxes ${Number(pair.key) + 1}`;
+      row.insertCell(0).innerText = `boxes ${Number(pair.key)}`;
       row.insertCell(1).innerText = pair.value.slice(1, -1).replace(/["",]/g, " ");
     });
 
