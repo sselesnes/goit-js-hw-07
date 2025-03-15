@@ -129,9 +129,10 @@ function updateSessionStorage() {
 
     ["click", "pointerover", "pointerout"].forEach(eventType => {
       exploreBtn.addEventListener(eventType, () => {
-        if (eventType === "click" && !boxesDiv.getElementsByTagName("table").length)
-          exploreSessionStorage();
-        if (eventType === "pointerover" && !boxesDiv.getElementsByTagName("table").length)
+        const isTableRendered = !!document.querySelector("#boxes table");
+        console.log(isTableRendered);
+        if (eventType === "click" && !isTableRendered) exploreSessionStorage();
+        if (eventType === "pointerover" && !isTableRendered)
           exploreBtn.style.background = tinycolor(getComputedStyle(exploreBtn).backgroundColor)
             .lighten(9)
             .toString();
