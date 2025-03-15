@@ -19,10 +19,7 @@ const createBoxes = amount => {
     const size = 30 + index * 10;
     const randomColor = getRandomHexColor();
     boxesArray.push(randomColor);
-    return `<div style="width: ${size}px;
-              height: ${size}px;
-              background-color: ${randomColor};">
-            </div>`;
+    return `<div style="width: ${size}px; height: ${size}px; background-color: ${randomColor};"></div>`;
   }).join("");
   boxesDiv.innerHTML = boxesHTML;
 };
@@ -132,8 +129,9 @@ function updateSessionStorage() {
 
     ["click", "pointerover", "pointerout"].forEach(eventType => {
       exploreBtn.addEventListener(eventType, () => {
-        eventType === "click" && exploreSessionStorage();
-        if (eventType === "pointerover")
+        if (eventType === "click" && !boxesDiv.getElementsByTagName("table").length)
+          exploreSessionStorage();
+        if (eventType === "pointerover" && !boxesDiv.getElementsByTagName("table").length)
           exploreBtn.style.background = tinycolor(getComputedStyle(exploreBtn).backgroundColor)
             .lighten(9)
             .toString();
