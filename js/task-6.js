@@ -1,8 +1,13 @@
 const inputField = document.querySelector("#controls input");
 const createBtn = document.querySelector("[data-create]");
 const destroyBtn = document.querySelector("[data-destroy]");
-const exploreBtn = document.querySelector("[data-explore]");
 const boxesDiv = document.querySelector("#boxes");
+
+const exploreBtn = document.createElement("button");
+exploreBtn.type = "button";
+exploreBtn.dataset.explore = "";
+exploreBtn.textContent = "Results";
+destroyBtn.insertAdjacentElement("afterend", exploreBtn);
 
 inputField.focus();
 let boxesAmount;
