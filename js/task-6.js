@@ -133,10 +133,7 @@ function updateSessionStorage() {
     ["click", "pointerover", "pointerout"].forEach(eventType => {
       exploreBtn.addEventListener(eventType, () => {
         eventType === "click" && exploreSessionStorage();
-        if (eventType === "pointerover") {
-          if (sessionStorage.length > 1)
-            exploreBtn.style.background = tinycolor("#69A7BC").lighten(9).toString();
-        }
+        if (eventType === "pointerover") exploreBtn.style.background = "#89BACA";
         if (eventType === "pointerout")
           setTimeout(() => (exploreBtn.style.background = "#69A7BC"), 100);
       });
