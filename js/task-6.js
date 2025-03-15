@@ -130,7 +130,6 @@ function updateSessionStorage() {
     ["click", "pointerover", "pointerout"].forEach(eventType => {
       exploreBtn.addEventListener(eventType, () => {
         const isTableRendered = !!document.querySelector("#boxes table");
-        console.log(isTableRendered);
         if (eventType === "click" && !isTableRendered) exploreSessionStorage();
         if (eventType === "pointerover" && !isTableRendered)
           exploreBtn.style.background = tinycolor(getComputedStyle(exploreBtn).backgroundColor)
